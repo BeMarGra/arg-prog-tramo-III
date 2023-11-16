@@ -4,7 +4,7 @@ const rutaPrincipal = __dirname + '/../../tmp/';
 
 ArchivosController.subirArchivo = (req, res) => {
     try{
-    const archivo = req.files.miArchivo;
+    const archivo = (req.files.miArchivo);
     const rutaGuardar = rutaPrincipal + archivo.name;
 
     return archivo.mv(rutaGuardar, function(err){
