@@ -7,6 +7,7 @@ const fileUpload = require('express-fileupload');
 const usuarioRouter = require('./routes/usuarioRoutes.js');
 const autenticacionRouter = require('./routes/autenticacionRouters.js');
 const archivosRouters = require('./routes/archivosRouters.js');
+const georefRouters = require('./routes/georefRouters.js');
 
 const app = express();
 const PORT = 3000;
@@ -19,6 +20,7 @@ app.use(fileUpload());
 app.use(usuarioRouter);
 app.use(autenticacionRouter);
 app.use(archivosRouters);
+app.use(georefRouters);
 
 //conexion al puerto
 app.listen(PORT, () => {
