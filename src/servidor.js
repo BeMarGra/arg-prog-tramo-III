@@ -8,6 +8,7 @@ const usuarioRouter = require('./routes/usuarioRoutes.js');
 const autenticacionRouter = require('./routes/autenticacionRouters.js');
 const archivosRouters = require('./routes/archivosRouters.js');
 const georefRouters = require('./routes/georefRouters.js');
+const emailRouters = require('./routes/emailRouters.js');
 
 const app = express();
 const PORT = 3000;
@@ -21,6 +22,7 @@ app.use(usuarioRouter);
 app.use(autenticacionRouter);
 app.use(archivosRouters);
 app.use(georefRouters);
+app.use(emailRouters);
 
 //conexion al puerto
 app.listen(PORT, () => {
