@@ -9,6 +9,7 @@ const autenticacionRouter = require('./routes/autenticacionRouters.js');
 const archivosRouters = require('./routes/archivosRouters.js');
 const georefRouters = require('./routes/georefRouters.js');
 const emailRouters = require('./routes/emailRouters.js');
+const { database } = require('./config/sequelizeConfig.js')
 
 const app = express();
 const PORT = 3000;
@@ -27,4 +28,5 @@ app.use(emailRouters);
 //conexion al puerto
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en el puerto ${PORT}`);
+    database();
 });
