@@ -3,33 +3,32 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const fileUpload = require('express-fileupload');
+const cors = require('cors');
 
-const usuarioRouter = require('./routes/usuarioRoutes.js');
-const autenticacionRouter = require('./routes/autenticacionRouters.js');
+const conectarMongo = require('./config/MongooseConfig.js');
+
+const usuarioRoutes = require('./routes/usuarioRoutes.js');
+const autenticacionRouters = require('./routes/autenticacionRouters.js');
 const archivosRouters = require('./routes/archivosRouters.js');
 const georefRouters = require('./routes/georefRouters.js');
-const emailRouters = require('./routes/emailRouters.js');
-
-const { database } = require('./config/sequelizeConfig.js');
-const conectarMongo = require('./config/mongooseConfig.js');
+const posteoRouters = require('./routes/posteoRoutes');
 
 const app = express();
 const PORT = 3000;
 
-//middleware
+// Middleware
+app.use(cors());
 app.use(bodyParser.json());
 app.use(fileUpload());
 
-//rutas
-app.use(usuarioRouter);
-app.use(autenticacionRouter);
+// Rutas
+app.use(usuarioRoutes);
+app.use(autenticacionRouters);
 app.use(archivosRouters);
 app.use(georefRouters);
-app.use(emailRouters);
+app.use(posteoRouters);
 
-//conexion al puerto
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en el puerto ${PORT}`);
-    //database();
     conectarMongo();
 });
